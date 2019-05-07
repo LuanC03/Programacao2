@@ -1,0 +1,68 @@
+/**
+	 * Construtor do Objeto Aposta
+	 * 
+	 * @param cenario,
+	 *            int referente ao Cenario que a Aposta esta ligada.
+	 * @param apostador,
+	 *            String contendo o autor da Aposta.
+	 * @param valor,
+	 *            int referente ao valor da Aposta feita.
+	 * @param previsao,
+	 *            String referente ao palpite do autor da Aposta.
+	 * @throws Exception
+	 */
+	public Aposta(int cenario, String apostador, int valor, String previsao, int valorSeguro, int custo)
+			throws Exception {
+		if (apostador.equals("") || apostador.equals(" ") || apostador == null)
+			throw new Exception("Nome do Apostador nao pode ser Nulo ou Vazio");
+		if (valor <= 0)
+			throw new Exception("Valor da Aposta tem que ser Maior que Zero");
+		if (previsao.equals("") || previsao.equals(" ") || previsao == null)
+			throw new Exception("Previsao nao pode estar Nula ou Vazia");
+		if(valorSeguro <= 0)
+			throw new Exception("Valor do Seguro tem que ser maior que zero");
+		this.cenario = cenario;
+		this.apostador = apostador;
+		this.valor = valor;
+		this.valorSeguro = valorSeguro;
+		this.taxa = 0;
+		this.custo = custo;
+		if (previsao.equalsIgnoreCase("VAI ACONTECER"))
+			this.previsao = FINALIZADO_OCORREU;
+		else if (previsao.equalsIgnoreCase("N VAI ACONTECER"))
+			this.previsao = FINALIZADO_nOCORREU;
+	}
+
+	/**
+	 * Construtor do Objeto Aposta
+	 * 
+	 * @param cenario,
+	 *            int referente ao Cenario que a Aposta esta ligada.
+	 * @param apostador,
+	 *            String contendo o autor da Aposta.
+	 * @param valor,
+	 *            int referente ao valor da Aposta feita.
+	 * @param previsao,
+	 *            String referente ao palpite do autor da Aposta.
+	 * @throws Exception
+	 */
+	public Aposta(int cenario, String apostador, int valor, String previsao, double taxa, int custo) throws Exception {
+		if (apostador.equals("") || apostador.equals(" ") || apostador == null)
+			throw new Exception("Nome do Apostador nao pode ser Nulo ou Vazio");
+		if (valor <= 0)
+			throw new Exception("Valor da Aposta tem que ser Maior que Zero");
+		if (previsao.equals("") || previsao.equals(" ") || previsao == null)
+			throw new Exception("Previsao nao pode estar Nula ou Vazia");
+		if(taxa <= 0)
+			throw new Exception("Taxa tem que ser maior que zero");
+		this.cenario = cenario;
+		this.apostador = apostador;
+		this.valor = valor;
+		this.valorSeguro = 0;
+		this.taxa = taxa;
+		this.custo = custo;
+		if (previsao.equalsIgnoreCase("VAI ACONTECER"))
+			this.previsao = FINALIZADO_OCORREU;
+		else if (previsao.equalsIgnoreCase("N VAI ACONTECER"))
+			this.previsao = FINALIZADO_nOCORREU;
+	}
